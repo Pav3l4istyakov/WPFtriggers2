@@ -19,10 +19,22 @@ namespace WPFtriggers2
     /// </summary>
     public partial class NewTaskWindow : Window
     {
+        private static Random random = new Random();
+
+        private DateTime GenerateRandomDate(DateTime start, DateTime end)
+        {
+            TimeSpan range = end - start;
+            double randTicks = random.NextDouble() * range.TotalDays;
+            return start + TimeSpan.FromDays(randTicks);
+        }
         public NewTaskWindow()
         {
             InitializeComponent();
+            DateTime minDate = new DateTime(2023, 1, 1); 
+            DateTime maxDate = new DateTime(2025, 12, 31); 
+            DueDatePicker.SelectedDate = GenerateRandomDate(minDate, maxDate);
         }
+
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
             string title = TitleTextBox.Text.Trim();
@@ -40,6 +52,6 @@ namespace WPFtriggers2
 
             Close();
         }
-    }
+    }    
 }
 
