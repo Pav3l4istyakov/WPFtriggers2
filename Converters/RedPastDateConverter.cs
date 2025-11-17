@@ -18,7 +18,7 @@ namespace WPFtriggers2.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException(); // Обратное преобразование не потребуется
+            throw new NotImplementedException(); 
         }
     }
 }
